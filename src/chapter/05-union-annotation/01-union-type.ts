@@ -1,6 +1,5 @@
 // ------------------------------------------------------------------------------
 // 📌 유니언 타입 (Union Type)
-// ⭐️ URL : https://bit.ly/3g375ky
 // ------------------------------------------------------------------------------
 // - 유니언 타입을 사용하면 여러 타입 별칭 중 매칭되는 하나를 지정할 수 있습니다.
 // - 유니언 타입은 파이프(|) 기호를 사용해 지정합니다.
@@ -10,11 +9,11 @@
 
 {
   type Product = {
-    readonly id: string;
+    readonly id: string | number;
   };
 
   const basket: Product = {
-    id: '81730121',
+    id: "81730121",
   };
 
   const cup: Product = {
@@ -22,7 +21,7 @@
   };
 }
 
-// coordinate 타입이 Point 또는 Location 중 하나를 허용하도록 설정합니다.
+// Coordinate 타입이 Point 또는 Location 중 하나를 허용하도록 설정합니다.
 
 {
   type Point = {
@@ -35,7 +34,9 @@
     longitude: number;
   };
 
-  let coordinate = { x: 100, y: -201 };
+  type Coordinate = Point | Location;
+
+  let coordinate: Coordinate = { x: 100, y: -201 };
 
   coordinate = {
     latitude: 920.23,

@@ -1,6 +1,5 @@
 // ------------------------------------------------------------------------------
 // 📌 리터럴 타입 & 유니언 (Literal Types & Union)
-// ⭐️ URL : https://bit.ly/3fZYXBc
 // ------------------------------------------------------------------------------
 // - 타입 대신 리터럴(값)을 그 자체로 설정할 수 있습니다.
 // - 리터럴을 타입으로 설정하는 것은 별 의미 없지만, 유니언과 결합하면 세밀한 옵션을 관리할 수 있습니다.
@@ -10,18 +9,24 @@
 
 {
   let zero: 0 = 0;
-  zero = -0.000001;
 
-  let bookIcon: 'book' = 'book';
-  bookIcon = '북';
+  // zero = -0.000001;
+
+  let bookIcon: "book" = "book";
+  // bookIcon = '북';
 }
 
 // 하지만 리터럴 + 유니언을 조합하면 매우 유용한 타입 옵션을 관리할 수 있습니다. 😃
 
 {
-  type IconIds = 'book' | 'send' | 'check-mark' | 'close-eye';
+  type IconIds = "book" | "send" | "check-mark" | "close-eye";
 
-  let iconType: IconIds = 'send';
-  iconType = 'close-eye';
-  iconType = 'books';
+  type Gender = "남성" | "여성";
+
+  let myGender: Gender = "남성";
+
+  let iconType: IconIds = "send";
+  iconType = "close-eye";
+  iconType = "book";
+  // ctrl + spacebar로 확인 가능
 }
