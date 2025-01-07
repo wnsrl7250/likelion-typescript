@@ -23,7 +23,7 @@ const server = http.createServer((request, response) => {
           <title>TypeScript 에센셜</title>
         </head>
         <body>
-          <h1>타입스크립트 에센셜</h1>
+          <h1>타입스크립트 에센셜(Essentials) 에센셜</h1>
         </body>
       </html>
     `);
