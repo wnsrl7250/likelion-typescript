@@ -25,6 +25,6 @@
     }
   }
 
-  isEqualityValue(101, '101');
-  isEqualityValue('EQUALITY', 'EQUALITY');
+  isEqualityValue(101, "101");
+  isEqualityValue("EQUALITY", "EQUALITY");
 }
