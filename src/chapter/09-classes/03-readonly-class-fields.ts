@@ -1,6 +1,5 @@
 // ------------------------------------------------------------------------------
 // 📌 읽기전용 클래스 필드 (Readonly Class Fields)
-// ⭐️ URL : https://bit.ly/3TxbA4C
 // ------------------------------------------------------------------------------
 // - 일부 인스턴스 프로퍼티를 읽기전용으로 설정할 수 있습니다.
 // ------------------------------------------------------------------------------
@@ -9,8 +8,8 @@
 
 {
   class Player {
-    nickname: string;
-    role: string;
+    readonly nickname: string;
+    readonly role: string;
     score: number = 0;
 
     constructor(nickname: string, role: string) {
@@ -27,11 +26,11 @@
     }
   }
 
-  const yamoo9 = new Player('yamoo9', '멘토');
+  const yamoo9 = new Player("yamoo9", "멘토");
 
   // 🚨 Player 객체 생성 이후 nickname, role 변경이 되서는 안됩니다!
-  yamoo9.nickname = 'employer';
-  yamoo9.role = 'CEO';
+  // yamoo9.nickname = 'employer';
+  // yamoo9.role = 'CEO';
 
   yamoo9.scoreUp(20);
   console.log(yamoo9.score);
