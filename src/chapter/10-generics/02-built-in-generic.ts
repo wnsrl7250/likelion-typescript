@@ -15,6 +15,7 @@
   // - 익스클레메이션(Exclamation)
   // - 타입 단언(Type Assertion)
   // - 제네릭(Generic)
+  // const button = document.querySelector<"li">("li");
   const inputEl = document.querySelector<HTMLInputElement>("#username");
 
   // 🧐 TypeScript ...
