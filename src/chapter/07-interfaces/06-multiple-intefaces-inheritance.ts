@@ -1,6 +1,5 @@
 // ------------------------------------------------------------------------------
 // 📌 멀티 인터페이스 상속 (Multiple Interface Inheritance)
-// ⭐️ URL : https://bit.ly/3O1s5EE
 // ------------------------------------------------------------------------------
 // - 인터페이스는 하나 이상 인터페이스를 상속(확장)할 수 있습니다.
 // ------------------------------------------------------------------------------
@@ -15,10 +14,10 @@
   }
 
   interface VerticalTypeMouse {
-    direction: 'Vertial';
+    direction: "Vertial";
   }
 
-  interface SpecialMouse {
+  interface SpecialMouse extends Mouse, VerticalTypeMouse {
     releaseDate: number;
   }
 
@@ -26,7 +25,7 @@
     x: 100,
     y: 120,
     hasWheel: true,
-    direction: 'Vertial',
+    direction: "Vertial",
     releaseDate: 2022,
   };
 
@@ -46,20 +45,20 @@
     email: string;
   }
 
-  interface Developer {
+  interface Developer extends Human, Employee {
     role: string;
     career: number;
     programmingLanguages: string[];
   }
 
   const teamLeader: Developer = {
-    name: '김상호',
+    name: "김상호",
     age: 51,
-    id: 'employee-dicos',
-    email: 'kimsh@employee.io',
-    role: '팀장',
+    id: "employee-dicos",
+    email: "kimsh@employee.io",
+    role: "팀장",
     career: 16,
-    programmingLanguages: ['TypeScript', 'JavaScript', 'Go', 'Python'],
+    programmingLanguages: ["TypeScript", "JavaScript", "Go", "Python"],
   };
 
   console.log(teamLeader.programmingLanguages);
