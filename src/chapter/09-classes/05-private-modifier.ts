@@ -7,12 +7,13 @@
 
 // score 인스턴스 프로퍼티를 외부에서 접근할 수 없도록 설정합니다.
 // boostScoreUp 인스턴스 프로퍼티를 외부에서 접근할 수 없도록 설정합니다.
+// private으로 클래스 내부에서만 접근 가능
 
 {
   class Player {
     public readonly nickname: string;
     public readonly role: string;
-    public score: number = 0;
+    private score: number = 0;
 
     constructor(nickname: string, role: string) {
       this.nickname = nickname;
@@ -20,7 +21,7 @@
       this.boostScoreUp();
     }
 
-    public boostScoreUp(): void {
+    private boostScoreUp(): void {
       this.score += 100;
     }
 
@@ -33,7 +34,7 @@
     }
   }
 
-  const yamoo9 = new Player('yamoo9', '멘토');
+  const yamoo9 = new Player("yamoo9", "멘토");
 
   yamoo9.boostScoreUp();
   console.log(yamoo9.score);
