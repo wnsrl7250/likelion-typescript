@@ -1,5 +1,5 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "typescript-essentials",
   "devDependencies": {
     "@types/lodash": "4.17.14",
