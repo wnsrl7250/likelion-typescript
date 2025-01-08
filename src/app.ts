@@ -6,8 +6,8 @@ import "dotenv/config";
 import express from "express";
 import type { Express, Request } from "express";
 import type { RequestUser, User } from "./types/user";
-import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { readUsers } from "./lib/users";
 
 /* CONFIG. ------------------------------------------------------------------ */
 
@@ -57,24 +57,26 @@ app.use(express.json());
 app.post(
   "/api/users",
   async (request: Request<{}, {}, RequestUser>, response) => {
-    // 클라이언트 요청(JSON)
+    // 클라이언트 요청 정보 해석(JSON)
     console.log(request.body);
 
     // 서버에서 프로그래밍
-    // data/users.json 파일 읽기
-    // fsPromises.readFile()
-    const usersString = await readFile(
-      resolve(__dirname, "./data/users.json"),
-      {
-        encoding: "utf-8",
-      }
-    );
+    // 1. 데이터 파일 읽기
+    const users = await readUsers();
 
-    // JSON forat string - [ JSON.parse(jsonString) ] -> JavaScript Object
-    const usersJSON: User[] = JSON.parse(usersString);
+    // 새롭게 생성될 사용자(User) 객체
+    // const newId = users.length + 1;
+    const newId = crypto.randomUUID(); // 랜덤아이디
+    const newUser = {
+      id: newId,
+      name: request.body.name,
+      gender: request.body.gender,
+      age: request.body.age,
+    };
 
-    // data/users.json 파일에 쓰기
-    // fsPromises.writeFile()
+    console.log({ newUser });
+
+    // 2. 데이터 파일 쓰기
 
     // 클라이언트에 응답
 
