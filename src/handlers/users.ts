@@ -63,13 +63,13 @@ export const readUserByIdHandler = async (
   response: Response
 ) => {
   // request paramters /:id
-  const { id } = request.params;
+  const id = Number(request.params.id);
 
   try {
     const users = await readUsers();
 
     // 요청된 ID 값과 일치하는 사용자가 존재하는 지 검토
-    const requestedUser = users.find((user) => user.id === Number(id));
+    const requestedUser = users.find((user) => user.id === id);
     if (requestedUser) {
       // 요청한 사용자 정보가 있을 경우, 응답
       response.status(200).json(requestedUser);
@@ -89,10 +89,9 @@ export const readUserByIdHandler = async (
 // UPDATE ---------------------------------------------------------------------
 
 // `PUT /api/users/:id`
-export const putUserHandler = async (
-  request: Request,
-  response: Response
-) => {};
+export const putUserHandler = async (request: Request, response: Response) => {
+  // 직접 구현해보세요. 😊
+};
 
 // `PATCH /api/users/:id`
 export const patchUserHandler = async (
@@ -100,7 +99,7 @@ export const patchUserHandler = async (
   response: Response
 ) => {
   const id = Number(request.params.id);
-  const requrestBody = request.body;
+  const requestBody = request.body;
 
   try {
     const users = await readUsers();
@@ -109,7 +108,7 @@ export const patchUserHandler = async (
     if (user) {
       const updatedUser = {
         ...user,
-        ...requrestBody,
+        ...requestBody,
       };
 
       const willUpdateUsers = users.map((user) => {
