@@ -11,13 +11,16 @@
 //
 // --------------------------------------------------------------------------
 
+import "dotenv/config";
 import express from "express";
 import type { Response, Express, Request, NextFunction } from "express";
 
 const app: Express = express();
 
+// for Windows Users
 const HOSTNAME = "localhost";
-const PORT = 5000;
+// const HOSTNAME = process.env.HOSTNAME ?? "localhost";
+const PORT = Number(process.env.PORT) ?? 4000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
 /* Routing ------------------------------------------------------------------ */
