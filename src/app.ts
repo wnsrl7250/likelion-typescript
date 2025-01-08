@@ -15,6 +15,7 @@ import express from "express";
 import type { Express } from "express";
 import entryHandler from "./handlers/entry";
 import greetingMessage from "./handlers/greetingMessage";
+import { resolve } from "node:path";
 
 const app: Express = express();
 
@@ -26,6 +27,7 @@ const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
 /* Middleware ------------------------------------------------------------------ */
 app.use(greetingMessage);
+app.use(express.static(resolve(__dirname, "../public")));
 
 /* Routing ------------------------------------------------------------------ */
 app.get("/", entryHandler);
