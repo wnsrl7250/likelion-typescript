@@ -10,44 +10,22 @@
 // 여러 정적 에셋 디렉토리를 사용하려면 express.static 미들웨어 함수를 여러 번 호출합니다.
 //
 // --------------------------------------------------------------------------
-
 import "dotenv/config";
 import express from "express";
-import type { Response, Express, Request, NextFunction } from "express";
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import type { Express } from "express";
+import entryHandler from "./handlers/entry";
 
 const app: Express = express();
 
 // for Windows Users
 const HOSTNAME = "localhost";
-// const HOSTNAME = process.env.HOSTNAME ?? "localhost";
+// const HOSTNAME = process.env.HOSTNAME ?? 'localhost';
 const PORT = Number(process.env.PORT) ?? 4000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
 /* Routing ------------------------------------------------------------------ */
 
-app.get(
-  "/",
-  async (request: Request, response: Response, nextFunction: NextFunction) => {
-    // 서버 애플리케이션의 로컬 저장소 위치의 파일 비동기 방식으로 읽기
-    // fsPromises.readFIle(path: string, options?)
-    // __dirname === new URL('./', import.meta.url)
-    try {
-      const entryFilePath = resolve(__dirname, "./index.html");
-      const entryFileCode = await readFile(entryFilePath, {
-        encoding: "utf-8",
-      });
-
-      // 서버 -> 클라이언트 응답(response)
-      response.send(entryFileCode);
-    } catch (error) {
-      response.status(500 /* Internal Server Error */).send({
-        message: (error as Error).message,
-      });
-    }
-  }
-);
+app.get("/", entryHandler);
 
 app.listen(PORT, HOSTNAME, () => {
   console.log(MESSAGE);
