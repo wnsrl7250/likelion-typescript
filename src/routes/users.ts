@@ -43,6 +43,7 @@ const usersRouter = Router();
 //     }
 //   }
 // );
+usersRouter.post("/", createUserHander);
 
 // // READ ------------------------------------------------------------------------
 
@@ -59,7 +60,7 @@ const usersRouter = Router();
 //     });
 //   }
 // });
-usersRouter.post("/", createUserHander);
+usersRouter.get("/", readAllUsersHandler);
 
 // `GET /api/users/:id`
 // usersRouter.get("/:id", async (request, response) => {
